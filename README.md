@@ -2,8 +2,8 @@
 
 La idea detrás de los datasets en pytorch es descentralizar el código para cargar los datos de un datset del código de entrenamiento de un modelo. Pytorch dispone de dos objetos:
 
-	`torch.utils.data.DataLoader` y
-	`torch.utils.data.Dataset` 
+	torch.utils.data.DataLoader y
+	torch.utils.data.Dataset 
 
 que permiten cargar y usar datasets preexistentes y datasets propios. `Dataset` almacena los datos y etiquetas en memoria, mientras que `Dataloader` crea un iterable alrededor de `Dataset` para acceder a las muestras.
 
@@ -37,6 +37,9 @@ Los datasets preexistentes de pytorch se encuentran en la librería `torchvision
 Dónde:
 
 `root` es la ruta donde se encuentran los datos almacenados
+
 `train` especifica si se va a usar la partición de entranamiento o de pruebas
+
 `download` especifica que si se quiere descargar el dataset o no y
+
 `transform` y `target_transform` especifica las transformaciones que se quieren hacer sobre los datos y las etiquetas.
