@@ -9,6 +9,15 @@ que permiten cargar y usar datasets preexistentes y datasets propios. `Dataset` 
 
 Entre los tipos de datasets preexistentes en pytorch se encuentran [imágenes](https://pytorch.org/vision/stable/datasets.html), [texto](https://pytorch.org/text/stable/datasets.html) y [audio](https://pytorch.org/audio/stable/datasets.html).
 
+### Paquetes necesarios
+
+1. Pytorch
+2. Torchvision
+3. Pandas
+4. Numpy
+5. Matplotlib
+6. PIL
+
 ### Cargar un dataset preexistente
 
 Los datasets preexistentes de pytorch se encuentran en la librería `torchvision`. Aunque para cargar cada dataset preexistente en torchvision se tienen diferentes parámetros, la función de cada uno de ellos en general viene siendo similar. Por ejemplo, para cargar la base de datos `Fashion-MNIST` de acuerdo a la [documentación oficial](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html), se tiene:
