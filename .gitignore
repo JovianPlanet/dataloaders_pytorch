@@ -1,5 +1,6 @@
 *.pyc
 *.log
+*test.py
 *unpack_cifar10.py
 **/__pycache__
 **/data

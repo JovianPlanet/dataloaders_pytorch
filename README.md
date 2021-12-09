@@ -1,4 +1,8 @@
+![alt text](img/itm_logo.png "ITM")
+
 # DATASETS Y DATALOADERS EN PYTORCH
+
+## Una breve introducción a datasets y dataloaders en pytorch
 
 La idea detrás de los datasets en pytorch es descentralizar el código para cargar los datos de un datset del código de entrenamiento de un modelo. Pytorch dispone de dos objetos:
 
@@ -17,6 +21,8 @@ Entre los tipos de datasets preexistentes en pytorch se encuentran [imágenes](h
 4. Numpy
 5. Matplotlib
 6. PIL
+
+## Vamos a la práctica
 
 ### Cargar un dataset preexistente
 
@@ -49,6 +55,22 @@ Dónde:
 
 `train` especifica si se va a usar la partición de entranamiento o de pruebas
 
-`download` especifica que si se quiere descargar el dataset o no y
+`download` especifica si se quiere descargar el dataset o no y
 
 `transform` y `target_transform` especifica las transformaciones que se quieren hacer sobre los datos y las etiquetas.
+
+
+## Generador automático de Datasets de pytorch
+
+El generador automático consta de una sencilla interfaz gráfica desde la cual el usuario puede establecer
+los parámetros que requiere.
+
+![alt text](img/gui_ss.png "GUI")
+
+En primer lugar se debe buscar la carpeta donde se encuentran los datos, para ello se debe hacer click en el botón `Browse` para abrir el navegador de carpetas y seleccionar la indicada. 
+
+Luego se debe indicar al programa la dimensión o resolución en pixeles a la que se desea cargar las imágenes. 
+
+Después de especificar el tamaño debe indicarse los formatos de imagen con los que se desea trabajar. Los formatos incluidos son `jpg`, `png` y `bmp`. Puede elegirse varios al tiempo.
+
+Por último, especificar las transformadas de `torchvision` que se desea incluir en el dataloader.  

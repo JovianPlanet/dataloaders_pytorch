@@ -11,12 +11,13 @@ path = 'data/animals'
 
 class ImageDataset(Dataset):
 
-    def __init__(self, dir_path, transform=None, target_transform=None):
+    def __init__(self, dir_path, transform=None, target_transform=None, dims=(128, 128)): #extension
 
         self.path = dir_path
         self.transform = transform
         self.target_transform = target_transform
-        self.dims = (128, 128)
+        self.dims = dims
+        #self.extension = extension
 
         subdirs = next(os.walk(self.path))[1]
 
@@ -25,8 +26,10 @@ class ImageDataset(Dataset):
             imgs = next(os.walk(os.path.join(self.path, class_)))[2]
 
             for img in imgs:
+                #if self.extension in img: # Generalizar para varios tipos de archivo
                 pathimg = os.path.join(self.path, class_, img)
                 L.append([pathimg, i])
+            # crear diccionario aqui
 
         self.df = pd.DataFrame(L, columns=['Path', 'Class'])
 
@@ -49,12 +52,12 @@ class ImageDataset(Dataset):
             
         return image, label
 
-transformations = transforms.Compose([transforms.CenterCrop(50), transforms.ToTensor()])#
+transformations = transforms.Compose([transforms.ToTensor()])#transforms.CenterCrop(50), 
 animales = ImageDataset(path, transform=transformations)
 
 animales_ds = DataLoader(animales, batch_size=2, shuffle=True)
-print(animales_ds)
-
+print(len(animales_ds))
+print(len(animales))
 images, labels = next(iter(animales_ds))
 
 print(f"Feature batch shape: {images.size()}")
@@ -64,3 +67,5 @@ label = labels[0]
 plt.imshow(img.permute(1, 2, 0), cmap="gray")
 plt.show()
 print(f"Label: {label}")
+
+# interfaz: escoger carpete, extensiones, tama;o imagen

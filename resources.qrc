@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="main">
+    <file>img/itm_logo.png</file>
+    <file>img/itm_logo_small.png</file>
+  </qresource>
+</RCC>
