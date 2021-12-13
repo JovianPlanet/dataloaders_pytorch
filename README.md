@@ -1,4 +1,4 @@
-![alt text](img/itm_logo.png "ITM")
+![alt text](img/ITM_rect.png "ITM")
 
 # DATASETS Y DATALOADERS EN PYTORCH
 

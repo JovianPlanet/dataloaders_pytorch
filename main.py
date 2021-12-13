@@ -26,7 +26,7 @@ class GUI(QtWidgets.QMainWindow, GUI.Ui_Form):
     def make_dl(self):
         with open('template.txt', 'r') as template:
             
-            with open('test.py', 'x') as dl:
+            with open('dl.py', 'x') as dl:
                 for line in template:
                     if "self.path = 'dir_path'" in line:
                         dl.write(line.replace('dir_path', self.dir))#(''.join(l[:-1], self.dir))

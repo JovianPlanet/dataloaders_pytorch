@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>ITM - Pytorch Dataset Generator</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/main/img/itm_logo_small.png</normaloff>:/main/img/itm_logo_small.png</iconset>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -19,12 +23,12 @@
      <x>10</x>
      <y>20</y>
      <width>354</width>
-     <height>313</height>
+     <height>323</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="MainVerticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <layout class="QHBoxLayout" name="title_layout">
       <item>
        <widget class="QLabel" name="title_label">
         <property name="maximumSize">
@@ -41,7 +45,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Custom Dataloader Generator</string>
+         <string>Pytorch Dataset Generator</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -54,7 +58,10 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="resources.qrc">:/main/img/itm_logo_small.png</pixmap>
+         <pixmap resource="resources.qrc">:/main/img/new_itm_logo_rec_small.png</pixmap>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -240,8 +247,16 @@
     </item>
     <item>
      <widget class="QPushButton" name="generate_button">
+      <property name="styleSheet">
+       <string notr="true">border-color: rgb(32, 74, 135);
+background-color: rgb(114, 159, 207);
+</string>
+      </property>
       <property name="text">
        <string>Generate</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
