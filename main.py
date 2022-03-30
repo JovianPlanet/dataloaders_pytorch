@@ -8,6 +8,8 @@ from PyQt5 import QtGui, QtCore, QtWidgets
 import sys
 import GUI
 import time
+import os
+from template import template
 
 class GUI(QtWidgets.QMainWindow, GUI.Ui_Form):
 
@@ -24,34 +26,39 @@ class GUI(QtWidgets.QMainWindow, GUI.Ui_Form):
         return
 
     def make_dl(self):
-        with open('template.txt', 'r') as template:
+        # if getattr(sys, 'frozen', False):
+        #     dl_template = os.path.join(sys._MEIPASS, 'template.txt')
+        # else:
+        #     dl_template = 'template.txt'
+
+        #with open(dl_template, 'r') as template: #with open('template.txt', 'r') as template:
             
-            with open('dl.py', 'x') as dl:
-                for line in template:
-                    if "self.path = 'dir_path'" in line:
-                        dl.write(line.replace('dir_path', self.dir))#(''.join(l[:-1], self.dir))
-                    elif 'self.dims = (dims)' in line:
-                        dl.write(line.replace('(dims)', '({}, {})'.format(self.width_spinbox.value(), self.height_spinbox.value()), -1))
-                    elif 'self.ext = []' in line:
-                        ext = []
-                        s = ', '
-                        if self.png_cb.isChecked():
-                            ext.append("'png'")
-                        if self.jpg_cb.isChecked():
-                            ext.append("'jpg'")
-                        if self.bmp_cb.isChecked():
-                            ext.append("'bmp'")
-                        dl.write(line.replace('[]', '[{}]'.format(s.join(ext))))
-                    elif 'self.transform = transforms' in line:
-                        tr = []
-                        s = ', '
-                        if self.toGS_cb.isChecked():
-                            tr.append('transforms.Grayscale()')
-                        if self.toTensor_cb.isChecked():
-                            tr.append('transforms.ToTensor()')
-                        dl.write(line.replace('transforms', 'transforms.Compose([{}])'.format(s.join(tr))))
-                    else:
-                        dl.write(line)
+        with open('dl.py', 'w') as dl:
+            for line in template.splitlines(keepends=True):
+                if "self.path = 'dir_path'" in line:
+                    dl.write(line.replace('dir_path', self.dir))#(''.join(l[:-1], self.dir))
+                elif 'self.dims = (dims)' in line:
+                    dl.write(line.replace('(dims)', '({}, {})'.format(self.width_spinbox.value(), self.height_spinbox.value()), -1))
+                elif 'self.ext = []' in line:
+                    ext = []
+                    s = ', '
+                    if self.png_cb.isChecked():
+                        ext.append("'png'")
+                    if self.jpg_cb.isChecked():
+                        ext.append("'jpg'")
+                    if self.bmp_cb.isChecked():
+                        ext.append("'bmp'")
+                    dl.write(line.replace('[]', '[{}]'.format(s.join(ext))))
+                elif 'self.transform = transforms' in line:
+                    tr = []
+                    s = ', '
+                    if self.toGS_cb.isChecked():
+                        tr.append('transforms.Grayscale()')
+                    if self.toTensor_cb.isChecked():
+                        tr.append('transforms.ToTensor()')
+                    dl.write(line.replace('transforms', 'transforms.Compose([{}])'.format(s.join(tr))))
+                else:
+                    dl.write(line)
         return
 
 def main():

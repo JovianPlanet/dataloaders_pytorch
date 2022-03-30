@@ -1,7 +1,10 @@
 *.pyc
 *.log
 *test.py
+*dl.py
 *unpack_cifar10.py
 **/__pycache__
 **/data
 *.ipynb_checkpoints
+*img_dl.py
+**/bundle
