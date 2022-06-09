@@ -55,17 +55,42 @@ class ImageDataset(Dataset):
 transformations = transforms.Compose([transforms.ToTensor()])#transforms.CenterCrop(50), 
 animales = ImageDataset(path, transform=transformations)
 
-animales_ds = DataLoader(animales, batch_size=2, shuffle=True)
+animales_ds = DataLoader(animales, batch_size=4, shuffle=True)
 print(len(animales_ds))
 print(len(animales))
 images, labels = next(iter(animales_ds))
 
 print(f"Feature batch shape: {images.size()}")
 print(f"Labels batch shape: {labels.size()}")
-img = images[0].squeeze()
+# img = images[0].squeeze()
 label = labels[0]
-plt.imshow(img.permute(1, 2, 0), cmap="gray")
-plt.show()
+# plt.imshow(img.permute(1, 2, 0), cmap="gray")
+# plt.show()
 print(f"Label: {label}")
+
+fig = plt.figure(figsize=(16, 16))
+fig.subplots_adjust(hspace=1 ,wspace=1)
+
+ax1 = fig.add_subplot(2, 2, 1)
+#ax1.title.set_text('imagen')
+ax1.axis("off")
+ax1.imshow(images[0].squeeze().permute(1, 2, 0), cmap="gray")
+
+ax2 = fig.add_subplot(2, 2, 2)
+#ax2.title.set_text('mask')
+ax2.axis("off")
+ax2.imshow(images[1].squeeze().permute(1, 2, 0), cmap="gray")
+
+ax3 = fig.add_subplot(2, 2, 3)
+#ax3.title.set_text('prediccion')
+ax3.axis("off")
+ax3.imshow(images[2].squeeze().permute(1, 2, 0), cmap="gray")
+
+ax4 = fig.add_subplot(2, 2, 4)
+#ax3.title.set_text('prediccion')
+ax4.axis("off")
+ax4.imshow(images[3].squeeze().permute(1, 2, 0), cmap="gray")
+
+plt.show()
 
 # interfaz: escoger carpete, extensiones, tama;o imagen

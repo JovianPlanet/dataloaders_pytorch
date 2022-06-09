@@ -2,6 +2,7 @@
 *.log
 *test.py
 *dl.py
+*img_dl.py
 *unpack_cifar10.py
 **/__pycache__
 **/data
